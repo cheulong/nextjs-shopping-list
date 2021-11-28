@@ -7,7 +7,7 @@ interface BookListProps {
 const BookList = ({ books }: BookListProps) => {
   return (
     <div className={'w-10/12 m-auto mt-10'}>
-      <table className={'table-fixed shadow-lg bg-white m-auto'}>
+      <table className={'table-fixed shadow-lg bg-white m-auto w-4/5'}>
         <thead>
           <tr>
             <th className={'w-2/5  px-8 py-4'}>Title</th>
