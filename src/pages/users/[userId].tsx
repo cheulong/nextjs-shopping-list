@@ -3,9 +3,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import Users from '../../components/Users';
-import { Users as UserContents } from '../../contents/Users.content';
+import { Users as UserContents } from '../../contents/Books.content';
 import { useRouter } from 'next/router';
-import { UserType } from '../../types/User.type';
+import { UserType } from '../../types/Book.type';
 
 const UserDetail: NextPage = () => {
   const router = useRouter();

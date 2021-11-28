@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import User from './User';
-import { Users as UserContents } from '../contents/Users.content';
+import { Users as UserContents } from '../contents/Books.content';
 import { Normal } from './Users.stories';
 
 const users = UserContents;

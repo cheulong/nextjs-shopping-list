@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Users as UserContents } from '../contents/Users.content';
+import { Users as UserContents } from '../contents/Books.content';
 import Users from './Users';
 
 export default {

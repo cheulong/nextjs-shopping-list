@@ -1,12 +1,12 @@
 import React from 'react';
-import { UserType } from '../types/User.type';
+// import { UserType } from '..types/Book.type';
 import styles from '../styles/User.module.css';
 import Link from 'next/link';
 
-interface userProps {
-  user: UserType;
-}
-const User = ({ user }: userProps) => {
+// interface userProps {
+//   user: UserType;
+// }
+const User = ({ user }: any) => {
   return (
     <Link href={`/users/${user.id}`} passHref>
       <div className={styles.container}>

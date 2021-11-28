@@ -1,15 +1,15 @@
 import React from 'react';
-import { UserType } from '../types/User.type';
+// import { UserType } from '../types/Book.type';
 import User from './User';
 
-interface usersProps {
-  users: UserType[];
-}
+// interface usersProps {
+//   users: UserType[];
+// }
 
-const Users = ({ users }: usersProps) => {
+const Users = ({ users }: any) => {
   return (
     <div data-testid='users'>
-      {users.map((item) => (
+      {users.map((item: { id: any }) => (
         <User user={item} key={item.id} />
       ))}
     </div>
