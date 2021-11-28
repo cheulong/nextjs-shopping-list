@@ -1,10 +1,26 @@
 import React from 'react';
+import { CartContext } from 'src/context/CartContext';
 import { BookType } from 'src/types/Book.type';
 
 interface BookListProps {
   books: BookType[];
 }
 const BookList = ({ books }: BookListProps) => {
+  const { value, setValue } = React.useContext(CartContext);
+  const onAddToCart = (bookId: number) => {
+    const existingItem = value.find((book) => book.id === bookId);
+    if (existingItem) {
+      existingItem.quantity += 1;
+      setValue([...value]);
+    } else {
+      const selectedItem = books.find((book) => book.id === bookId);
+      setValue([...value, { ...selectedItem, quantity: 1 }]);
+    }
+  };
+  const reset = () => {
+    setValue([]);
+  };
+
   return (
     <div className={'w-10/12 m-auto mt-10'}>
       <table className={'table-fixed shadow-lg bg-white m-auto w-4/5'}>
@@ -26,11 +42,20 @@ const BookList = ({ books }: BookListProps) => {
                 className={
                   ' w-full bg-blue-500 text-white hover:underline hover:bg-blue-600 px-8 py-4'
                 }
+                onClick={() => onAddToCart(book.id)}
               >
                 Add
               </button>
             </tr>
           ))}
+          <button
+            className={
+              ' w-full bg-blue-500 text-white hover:underline hover:bg-blue-600 px-8 py-4'
+            }
+            onClick={() => reset()}
+          >
+            Add
+          </button>
         </tbody>
       </table>
     </div>

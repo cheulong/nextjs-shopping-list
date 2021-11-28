@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
+import { CartContext } from 'src/context/CartContext';
+import { CartItem } from 'src/types/CartItem.type';
+import _ from 'lodash';
 const Navbar = () => {
   const router = useRouter();
   console.log(router.pathname);
+  const { value, setValue } = React.useContext(CartContext);
+  const totalItems = useMemo(() => _.sumBy(value, 'quantity'), [value]);
+
+  console.log(totalItems);
 
   return (
     <div>
@@ -25,17 +31,22 @@ const Navbar = () => {
           </Link>
           <Link href={`./cart`} passHref>
             <a
-              className={
-                'bg-yellow-400 px-3 py-1 rounded-full hover:underline relative'
-              }
+              className={` px-3 py-1 rounded-full hover:underline relative
+                ${
+                  router.pathname === '/cart'
+                    ? 'bg-yellow-600 underline'
+                    : 'bg-yellow-400'
+                }`}
             >
               cart
               <span
                 className={
-                  'absolute bg-red-600 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3'
+                  totalItems === 0
+                    ? 'hidden'
+                    : 'absolute bg-red-600 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3'
                 }
               >
-                0
+                {totalItems}
               </span>
             </a>
           </Link>
