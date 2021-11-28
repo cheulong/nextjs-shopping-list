@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  background: grey;
+  margin: 10px;
+}
+
+.container:hover {
+  background: lightgray;
+}
