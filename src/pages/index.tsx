@@ -1,5 +1,5 @@
 import BookList from '@/components/BookList';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/nav/Navbar';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
