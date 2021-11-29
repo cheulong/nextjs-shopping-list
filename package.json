@@ -11,9 +11,7 @@
     "testw": "jest --watch",
     "testc": "jest --coverage ",
     "prettier:fix": "prettier --write",
-    "prettier:check": "prettier --check .",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "@storybook/addon-postcss": "^2.0.0",
