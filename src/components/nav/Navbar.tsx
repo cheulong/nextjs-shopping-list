@@ -1,16 +1,11 @@
 import React, { useContext, useMemo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { CartContext } from 'src/context/CartContext';
-import { CartItem } from 'src/types/CartItem.type';
-import _ from 'lodash';
+import useItem from 'src/hooks/useItem';
+
 const Navbar = () => {
   const router = useRouter();
-  console.log(router.pathname);
-  const { value, setValue } = React.useContext(CartContext);
-  const totalItems = useMemo(() => _.sumBy(value, 'quantity'), [value]);
-
-  console.log(totalItems);
+  const { totalItems } = useItem();
 
   return (
     <div>
