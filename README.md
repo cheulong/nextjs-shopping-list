@@ -8,17 +8,12 @@ yarn
 yarn dev
 ```
 
-Storybook
 
-```bash
-yarn storybook
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Dependencies
 
-- storybook
 - husky
 - typescript
 - git hook
