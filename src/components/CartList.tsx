@@ -1,18 +1,11 @@
 import React from 'react';
 import { CartContext } from 'src/context/CartContext';
-import { BookType } from 'src/types/Book.type';
+import usePrice from 'src/hooks/usePrice';
 import CartItem from './CartItem';
 
-interface BookListProps {
-  books: BookType[];
-}
-const CartList = ({ books }: BookListProps) => {
-  const { value, setValue } = React.useContext(CartContext);
-  const getTotalPrice = () => {
-    return value.reduce((acc, item) => {
-      return acc + item.price * item.quantity;
-    }, 0);
-  };
+const CartList = () => {
+  const { value } = React.useContext(CartContext);
+  const { getTotalPrice } = usePrice();
 
   return (
     <div className={'w-10/12 m-auto mt-10'}>

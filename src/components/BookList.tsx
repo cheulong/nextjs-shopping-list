@@ -7,12 +7,6 @@ interface BookListProps {
   books: BookType[];
 }
 const BookList = ({ books }: BookListProps) => {
-  const { value, setValue } = React.useContext(CartContext);
-
-  const reset = () => {
-    setValue([]);
-  };
-
   return (
     <div className={'w-10/12 m-auto mt-10'}>
       <table className={'table-fixed shadow-lg bg-white m-auto w-4/5'}>
@@ -24,16 +18,8 @@ const BookList = ({ books }: BookListProps) => {
             <th className={'w-1/5  px-8 py-4'}></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid='test-tbody'>
           <BookItem books={books} />
-          <button
-            className={
-              ' w-full bg-blue-500 text-white hover:underline hover:bg-blue-600 px-8 py-4'
-            }
-            onClick={() => reset()}
-          >
-            Add
-          </button>
         </tbody>
       </table>
     </div>

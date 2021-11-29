@@ -1,41 +1,15 @@
 import React from 'react';
-import { BookType } from 'src/types/Book.type';
 import { CartContext } from 'src/context/CartContext';
 import { CartItem as CartItemType } from 'src/types/CartItem.type';
+import Button from './button/Button';
+import useItem from 'src/hooks/useItem';
 
 interface CartItemProps {
   items: CartItemType[];
 }
 
 const CartItem = ({ items }: CartItemProps) => {
-  const { value, setValue } = React.useContext(CartContext);
-  const onRemoveFromCart = (bookId: number) => {
-    const existingItem: CartItemType | undefined = value.find(
-      (book) => book.id === bookId
-    );
-    if (existingItem) {
-      if (existingItem.quantity === 1) {
-        const newValue = value.filter((book) => book.id !== bookId);
-        setValue(newValue);
-      } else {
-        existingItem.quantity -= 1;
-        setValue([...value]);
-      }
-    }
-  };
-
-  const changeQuantity = (
-    bookId: number,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const existingItem: CartItemType | undefined = value.find(
-      (book) => book.id === bookId
-    );
-    if (existingItem) {
-      existingItem.quantity = Number(event.target.value);
-      setValue([...value]);
-    }
-  };
+  const { onRemoveFromCart, changeQuantity } = useItem();
 
   return (
     <>
@@ -56,14 +30,11 @@ const CartItem = ({ items }: CartItemProps) => {
             {'$' + (item.price * item.quantity).toFixed(2)}
           </td>
           <td>
-            <button
-              className={
-                ' w-full bg-red-500 text-white hover:underline hover:bg-red-600 px-8 py-4'
-              }
-              onClick={() => onRemoveFromCart(item.id)}
-            >
-              Remove
-            </button>
+            <Button
+              handleClick={onRemoveFromCart}
+              bookId={item.id}
+              isAddButton={false}
+            />
           </td>
         </tr>
       ))}

@@ -10,6 +10,7 @@ const Button = ({ handleClick, bookId, isAddButton }: ButtonProps) => {
     <>
       {isAddButton ? (
         <button
+          data-testid='test-button'
           className={
             ' w-full bg-blue-500 text-white hover:underline hover:bg-blue-600 px-8 py-4'
           }
@@ -19,8 +20,9 @@ const Button = ({ handleClick, bookId, isAddButton }: ButtonProps) => {
         </button>
       ) : (
         <button
+          data-testid='test-button'
           className={
-            ' w-full bg-blue-500 text-white hover:underline hover:bg-blue-600 px-8 py-4'
+            ' w-full bg-red-500 text-white hover:underline hover:bg-red-600 px-8 py-4'
           }
           onClick={() => handleClick(bookId)}
         >
